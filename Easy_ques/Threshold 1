@@ -1,0 +1,23 @@
+def maxIndex(A, X, K):
+    n = len(A)
+    
+    for i in range(n - 1):
+        if A[i+1] <= A[i] + X:
+            continue
+        else:
+            if K > 0:
+                K -= 1
+            else:
+                return i  
+    
+    return n - 1
+
+
+if __name__ == "__main__":
+    n = int(input())
+    X = int(input())
+    K = int(input())
+    
+    A = [int(input()) for _ in range(n)]
+    
+    print(maxIndex(A, X, K))
