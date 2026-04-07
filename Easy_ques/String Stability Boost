@@ -1,0 +1,31 @@
+def getDistinctPairs(s):
+    pairs = set()
+    for i in range(len(s) - 1):
+        pairs.add(s[i] + s[i+1])
+    return len(pairs)
+
+
+def maxStability(s):
+    n = len(s)
+    max_ans = 0
+    
+    for i in range(n - 1):
+        temp = list(s)
+        
+        # swap
+        temp[i], temp[i+1] = temp[i+1], temp[i]
+        
+        new_s = "".join(temp)
+        
+        # count distinct pairs
+        count = getDistinctPairs(new_s)
+        
+        max_ans = max(max_ans, count)
+    
+    return max_ans
+
+
+# -------- MAIN --------
+if __name__ == "__main__":
+    s = input().strip()
+    print(maxStability(s))
