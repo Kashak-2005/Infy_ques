@@ -1,0 +1,18 @@
+MOD = 10**9 + 7
+
+def totalCoins(A, B, n):
+    total = 0
+    
+    for i in range(n):
+        coins = (A[i] * pow(2, B[i], MOD)) % MOD
+        total = (total + coins) % MOD
+    
+    return total
+
+if __name__ == "__main__":
+    n = int(input())
+    
+    A = [int(input()) for _ in range(n)]
+    B = [int(input()) for _ in range(n)]
+    
+    print(totalCoins(A, B, n))
