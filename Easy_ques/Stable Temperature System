@@ -1,0 +1,20 @@
+def minOperations(T):
+    n = len(T)
+    cost = 0
+    
+    for i in range(1, n):
+        allowed = T[i-1] + 1
+        
+        if T[i] > allowed:
+            cost += T[i] - allowed
+            T[i] = allowed   # reduce it
+    
+    return cost
+
+
+# -------- MAIN --------
+if __name__ == "__main__":
+    n = int(input())
+    T = [int(input()) for _ in range(n)]
+    
+    print(minOperations(T))
